@@ -581,6 +581,7 @@ struct _GLFWwindow
         GLFWcharfun               character;
         GLFWcharmodsfun           charmods;
         GLFWdropfun               drop;
+        GLFWthemefun              theme;
     } callbacks;
 
     // This is defined in platform.h

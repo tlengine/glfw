@@ -1969,6 +1969,10 @@ typedef void (* GLFWcharmodsfun)(GLFWwindow* window, unsigned int codepoint, int
  */
 typedef void (* GLFWdropfun)(GLFWwindow* window, int path_count, const char* paths[]);
 
+#define GLFW_SYSTEM_THEME_LIGHT 0
+#define GLFW_SYSTEM_THEME_DARK  1
+typedef void (* GLFWthemefun)(GLFWwindow* window, int theme);
+
 /*! @brief The function pointer type for monitor configuration callbacks.
  *
  *  This is the function pointer type for monitor configuration callbacks.
@@ -4495,6 +4499,8 @@ GLFWAPI GLFWframebuffersizefun glfwSetFramebufferSizeCallback(GLFWwindow* window
  *  @ingroup window
  */
 GLFWAPI GLFWwindowcontentscalefun glfwSetWindowContentScaleCallback(GLFWwindow* window, GLFWwindowcontentscalefun callback);
+
+GLFWAPI GLFWthemefun glfwSetThemeCallback(GLFWwindow* window, GLFWthemefun callback);
 
 /*! @brief Processes all pending events.
  *

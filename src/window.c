@@ -1164,6 +1164,17 @@ GLFWAPI GLFWwindowcontentscalefun glfwSetWindowContentScaleCallback(GLFWwindow* 
     return cbfun;
 }
 
+GLFWAPI GLFWthemefun glfwSetThemeCallback(GLFWwindow* handle, GLFWthemefun cbfun)
+{
+    _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
+
+    _GLFWwindow* window = (_GLFWwindow*) handle;
+    assert(window != NULL);
+
+    _GLFW_SWAP(GLFWthemefun, window->callbacks.theme, cbfun);
+    return cbfun;
+}
+
 GLFWAPI void glfwPollEvents(void)
 {
     _GLFW_REQUIRE_INIT();

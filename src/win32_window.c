@@ -33,7 +33,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+
+#include <windows.h>
 #include <windowsx.h>
+#include <winreg.h>
 #include <shellapi.h>
 
 // Returns the window style for the specified window
@@ -557,6 +560,16 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM l
 
     switch (uMsg)
     {
+        case WM_WININICHANGE:
+        {
+            if (strcmp(lParam, TEXT("ImmersiveColorSet")) == 0)
+            {
+                if (window->callbacks.theme)
+                    window->callbacks.theme((GLFWwindow*) window, INT32_MAX); // TODO: report theme correctly
+            }
+            break;
+        }
+        
         case WM_MOUSEACTIVATE:
         {
             // HACK: Postpone cursor disabling when the window was activated by
