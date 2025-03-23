@@ -1,10 +1,10 @@
-project "glfw"
-	language "c"
-	kind "staticlib"
-	warnings "off"
+project "GLFW"
+	language "C"
+	kind "StaticLib"
+	warnings "Off"
 	
-	targetdir "%{outdir.bin}/%{prj.name}"
-	objdir    "%{outdir.obj}/%{prj.name}"
+	targetdir "%{OutputDir.Binaries}/%{prj.name}"
+	objdir    "%{OutputDir.Intermediates}/%{prj.name}"
 	
 	files
 	{
@@ -58,6 +58,7 @@ project "glfw"
 			"src/posix_time.c",
 			"src/posix_thread.c",
 			"src/posix_module.c",
+			"src/posix_pull.c",
 			"src/glx_context.c",
 			"src/egl_context.c",
 			"src/osmesa_context.c",
@@ -68,15 +69,15 @@ project "glfw"
 			"_GLFW_X11"
 		}
 	
-	filter "configurations:devel"
-		runtime "debug"
-		symbols "on"
+	filter "configurations:Development"
+		runtime "Debug"
+		symbols "On"
 	
-	filter "configurations:prev"
-		runtime "release"
-		optimize "speed"
+	filter "configurations:Preview"
+		runtime "Release"
+		optimize "Speed"
 	
-	filter "configurations:ship"
-		runtime "release"
-		optimize "speed"
+	filter "configurations:Shipping"
+		runtime "Release"
+		optimize "Speed"
 	
